@@ -5,6 +5,7 @@ public class Persona {
     private Long telefono;
     private String direccion;
     private String nacionalidad;
+    private String nivelInstuccion;
 
     
 
@@ -26,13 +27,17 @@ public class Persona {
         return "La persona "+this.nombre+" trabaja en "+nombreEmpresa;
     }
 
-    private String comer(String comida){
+    public String comer(String comida){
         return "La persona comio "+comida;
     }
 
-    private void dormir(int hora){
+    public void dormir(int hora){
         int aumentarTiempo = hora + 1;
         System.out.println("Yo me duermo 1 hora mas tarde que tí "+aumentarTiempo);
+    }
+
+    public String aprender(String nombreMateria){
+        return "Usted esta aprendiendo "+nombreMateria;
     }
 
     public Long getIdentificacion() {
@@ -67,5 +72,14 @@ public class Persona {
         this.nacionalidad = nacionalidad;
     }
 
+    public String getNivelInstuccion() {
+        return nivelInstuccion;
+    }
+
+    public void setNivelInstuccion(String nivelInstuccion) {
+        this.nivelInstuccion = nivelInstuccion;
+    }
+
+    
     
 }
