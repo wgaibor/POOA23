@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class App {
@@ -30,7 +31,7 @@ public class App {
         System.out.println("La edad de "+objetoAllison.nombre+" es  "+objetoAllison.edad+ " direccion "+objetoAllison.getDireccion());
         System.out.println(mensaje4);*/
 
-        List<Materia> lstMaterias = new ArrayList<>();
+        /*List<Materia> lstMaterias = new ArrayList<>();
         Materia sistemasOperativos = new Materia();
         sistemasOperativos.nombre = "Sistemas Operativos";
         sistemasOperativos.horas = 2;
@@ -51,5 +52,19 @@ public class App {
 
 
         Alumno alumno1 = new Alumno("Jorge",20,1201831461L, 994756152L ,"Tulcan y Velez", "Ecuatoriano", "Alumno del tecnologico");
+
+        final double VALORPI = 3.1416;
+        double valorDePi = 3.1416;
+        System.out.println(VALORPI+"");
+        valorDePi = 5.7902;
+        System.out.println(valorDePi+"");
+        System.out.println(dimeLaHora()+"");*/
+        Materia sistemaOperativo = new Materia();
+        boolean esRespuesta = sistemaOperativo.pasasteLaMateria("SI");
+        System.out.println("La respuesta fue   "+esRespuesta);
+    }
+
+    public static Date dimeLaHora(){
+        return new Date();
     }
 }
