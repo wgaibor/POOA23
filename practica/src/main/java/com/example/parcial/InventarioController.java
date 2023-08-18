@@ -1,18 +1,17 @@
-package com.example.tienda;
+package com.example.parcial;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class InventarioController {
 
@@ -23,14 +22,8 @@ public class InventarioController {
     private Button btnLimpiar;
 
     @FXML
-    private TextField txtCodigo;
+    private TableColumn<?, ?> tbcCantidad;
 
-    @FXML
-    private TextField txtDescripcion;
-
-    @FXML
-    private TextField txtPrecio;
-    
     @FXML
     private TableColumn<?, ?> tbcCodigo;
 
@@ -38,35 +31,43 @@ public class InventarioController {
     private TableColumn<?, ?> tbcDescripcion;
 
     @FXML
-    private TableColumn<?, ?> tbcPrecio;
+    private TableView<InventarioEntity> tblInventario;
 
     @FXML
-    private TableView<InventarioEntity> tblInventario;
+    private TextField txtCantidad;
+
+    @FXML
+    private TextField txtCodigo;
+
+    @FXML
+    private TextField txtDescripcion;
 
     List<InventarioEntity> lstInventario = new ArrayList<>();
 
     @FXML
     void guardar(ActionEvent event) {
-        String id = txtCodigo.getText();
+        String codigo = txtCodigo.getText();
         String descripcion = txtDescripcion.getText();
-        String precio = txtPrecio.getText();
+        String cantidad = txtCantidad.getText();
 
-        InventarioEntity inventario = new InventarioEntity();
-        inventario.setCodigo(id);
-        inventario.setDescripcion(descripcion);
-        inventario.setPrecio(precio);
-        lstInventario.add(inventario);
+        InventarioEntity objInventario = new InventarioEntity();
+        objInventario.setCodigo(codigo);
+        objInventario.setDescripcion(descripcion);
+        objInventario.setCantidad(cantidad);
+        lstInventario.add(objInventario);
+
         limpiar(event);
 
-        mostrarGrilla(lstInventario);
+        llenarLaTabla(lstInventario);
+
     }
 
-    private void mostrarGrilla(List<InventarioEntity> lstInventario) {
+    private void llenarLaTabla(List<InventarioEntity> lstInventario) {
         tblInventario.getItems().clear();
 
         tbcCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         tbcDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        tbcPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
+        tbcCantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
 
         ObservableList<InventarioEntity> items = FXCollections.observableArrayList(lstInventario);
         tblInventario.setItems(items);
@@ -76,7 +77,7 @@ public class InventarioController {
     void limpiar(ActionEvent event) {
         txtCodigo.setText("");
         txtDescripcion.setText("");
-        txtPrecio.setText("");
+        txtCantidad.setText("");
     }
 
 }
